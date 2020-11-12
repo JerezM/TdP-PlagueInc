@@ -1,0 +1,18 @@
+mientras ( nivelController.hasNext() && jugadorController.isDead() ) {//Si to
+	mientras ( !nivelController.nivelCompletado() && jugadorController.isDead() ) {
+		entidadesActuales = entidades;
+		
+		for ( EntidadModel entidad : entidadesActuales ) {
+			entidad.update();//Mueve a las entidades en la direccion correspondiente 
+		}
+
+		int movJugador = this.getUltimoMovJugador();//Retorno un int el cual va a indicar el mov del jugador(con ayuda de un enum)
+		this.updateJugador(movJugador);
+
+		masterCollider.checkCollisions();
+		
+		/*A lo largo del metodo voy recolectando los imageIcon, posicion y hashcode de cada entidadModel y el jugador,
+		  los mismos estaran en una lista la cual se le dara al UIUpdater el cual se encargara de actualizar los componentes
+		  visuales correspondientes a las entidades.*/
+	}
+}
