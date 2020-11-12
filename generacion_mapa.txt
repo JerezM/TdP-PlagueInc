@@ -1,0 +1,12 @@
+1) Juego se comunica con GameMasterController y utiliza el metodo generarMapa();
+2) GameMasterCotroller deriva el mismo metodo hacia GameMaster;
+3) GameMaster se comunica con NivelController para derivar el metodo nuevamente;
+4) NivelController le dice a Nivel que genere el mapa;
+5) Nivel inicializa las instancias de Mapa y OleadaEnemigos con su respectivo state en lvl 1;
+6) Obtengo el ImageIcon que posee el Mapa en el lvl 1 y luego Nivel le pasa el mismo a GameMaster;
+7) GameMaster inicializa a Jugador tambien y obtiene datos relevantes para la generacion de su label;
+8) GameMaster le pasa los datos obtenidos a UIUpdater el cual se va a encargar de inicializar el PanelView
+   el cual es un JPanel y despues le va a agregar el JLabel que seria el jugador dentro del mismo.
+9) Terminado eso, la clase Juego inicializara la GUI la cual internamente conoce a MapaView y
+   lo agrega como un panel dentro del contentPane principal.
+10) Se hace visible la GUI y luego deberia de poder visualizarse el Mapa y al jugador en la pantalla.
