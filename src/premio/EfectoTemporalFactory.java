@@ -1,4 +1,4 @@
-package Premio;
+package premio;
 
 public class EfectoTemporalFactory implements PremioFactory {
 	

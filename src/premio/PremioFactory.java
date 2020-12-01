@@ -1,4 +1,4 @@
-package Premio;
+package premio;
 
 public interface PremioFactory {
 

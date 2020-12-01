@@ -1,4 +1,4 @@
-package Infectado;
+package infectado;
 
 public interface InfectadoAlphaState {
 

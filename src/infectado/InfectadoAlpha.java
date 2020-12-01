@@ -1,9 +1,9 @@
-package Infectado;
+package infectado;
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-import EntidadGrafica.*;
+import entidad.grafica.*;
 
 public class InfectadoAlpha extends Infectado {
 	

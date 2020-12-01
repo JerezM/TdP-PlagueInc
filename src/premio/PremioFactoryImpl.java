@@ -1,4 +1,4 @@
-package Premio;
+package premio;
 
 import java.util.ArrayList;
 import java.util.Random;

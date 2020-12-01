@@ -1,10 +1,10 @@
-package Infectado;
+package infectado;
 
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-import EntidadGrafica.*;
+import entidad.grafica.*;
 
 public class InfectadoBeta extends Infectado{
 	

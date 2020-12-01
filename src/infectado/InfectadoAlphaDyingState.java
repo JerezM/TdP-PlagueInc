@@ -1,4 +1,4 @@
-package Infectado;
+package infectado;
 
 import java.awt.Point;
 
@@ -16,7 +16,9 @@ public class InfectadoAlphaDyingState implements InfectadoAlphaState{
 			
 			infectadoAlpha.setVida(vida-a);	
 		}
-		else infectadoAlpha.setEstado(EstadosInfectado.MUERTO.getEstado());
+		else {
+				infectadoAlpha.setEstado(EstadosInfectado.MUERTO.getEstado());
+		}
 	}
 
 	public void atacar() {

@@ -1,4 +1,4 @@
-package EntidadGrafica;
+package entidad.grafica;
 
 import javax.swing.ImageIcon;
 

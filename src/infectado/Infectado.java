@@ -1,11 +1,11 @@
-package Infectado;
+package infectado;
 
 import java.awt.Point;
 
 import javax.swing.ImageIcon;
 
-import EntidadGrafica.*;
-import Premio.*;
+import entidad.grafica.*;
+import premio.*;
 
 public abstract class Infectado {
 
@@ -19,6 +19,7 @@ public abstract class Infectado {
 	protected EntidadGrafica entidadGrafica;
 	protected PremioFactory premioFactory;
 	protected int estado;
+	protected InfectadoVisitor visitor;
 	
 	public Infectado (int posicionCreacion) {
 		
@@ -31,6 +32,7 @@ public abstract class Infectado {
 		this.premioFactory= PremioFactoryImpl.getInstance();
 		// accion actual puede ser desplazamiento o atacando
 	//.accionActual= EstadosInfectado.getEstado();
+		this.visitor= new InfectadoVisitorImpl(this);
 	}
 	
 	abstract void recibirAtaque (int poderAtaqueRecibido); // ABSTRACT 
@@ -47,7 +49,10 @@ public abstract class Infectado {
 		return posActual.getLocation();
 	}
 	
-	public void lanzarPremio() {} // PREG 
+	public Premio lanzarPremio() {
+	
+		return premioFactory.createPremio();
+	} 
 	
 	public int getVida() {
 		return vida;
