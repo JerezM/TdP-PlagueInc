@@ -1,2 +1,6 @@
-
+#Ignoring the bin folder
 /bin/
+
+#Ignore .classpath and .project
+.classpath
+.project
