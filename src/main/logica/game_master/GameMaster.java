@@ -1,7 +1,6 @@
 package main.logica.game_master;
 
 import main.logica.nivel.NivelController;
-import main.logica.nivel.NivelControllerImpl;
 
 public class GameMaster extends Thread {
     
@@ -10,7 +9,7 @@ public class GameMaster extends Thread {
     private NivelController nivelController;
 
     private GameMaster() {
-        nivelController = NivelControllerImpl.getInstance();
+        nivelController = NivelController.getInstance();
     }
 
     public static GameMaster getInstance() {
@@ -22,6 +21,6 @@ public class GameMaster extends Thread {
     }
 
     public void inicializarPartida() {
-        nivelController.generarMapa();
+        nivelController.inicializarPartida();
     }
 }
