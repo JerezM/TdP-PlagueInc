@@ -3,6 +3,8 @@ package main.logica.nivel.mapa;
 import javax.swing.ImageIcon;
 
 import main.logica.entidad_grafica.EntidadGraficaMapa;
+import main.view.mapa.MapaViewController;
+import main.view.mapa.MapaViewControllerImpl;
 
 public class Mapa {
     
@@ -11,11 +13,11 @@ public class Mapa {
     private EntidadGraficaMapa entidadGrafica;
     private ImageIcon mapaActual;
 
-    //private MapaViewController mapaViewController;
+    private MapaViewController mapaViewController;
 
     private Mapa() {
         entidadGrafica = EntidadGraficaMapa.getInstance();
-        //mapaViewController = MapaViewController.getInstance();
+        mapaViewController = MapaViewControllerImpl.getInstance();
     }
 
     public static Mapa getInstance() {
@@ -30,9 +32,7 @@ public class Mapa {
      * Se encarga de generar el mapa en su nivel inicial, a la vez que se encarga de inicializar su componente grafico.
      */
     public void inicializarMapaLvl1() {
-
         mapaActual = entidadGrafica.getSprite();
-        //mapaViewController.generarComponenteGraficoMapa(mapaActual);
-
+        mapaViewController.inicializarComponenteGraficoMapa(mapaActual);
     }
 }
