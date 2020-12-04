@@ -1,13 +1,15 @@
 package main.logica.nivel;
 
+import main.logica.nivel.mapa.Mapa;
+
 public class Nivel {
     
     private static Nivel instance;
 
-    //private Mapa mapa;
+    private Mapa mapa;
 
     private Nivel() {
-        //mapa = Mapa.getInstance();
+        mapa = Mapa.getInstance();
     }
 
     public static Nivel getInstance() {
@@ -29,7 +31,7 @@ public class Nivel {
      * Se encarga de inicializar el mapa en el nivel inicial.
      */
     protected void inicializarMapaLvl1() {
-        //mapa.inicializarMapaLvl1();
+        mapa.inicializarMapaLvl1();
     }
 
     /**
