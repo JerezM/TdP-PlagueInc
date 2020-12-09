@@ -30,8 +30,7 @@ public abstract class Infectado {
 		this.rangoAlcanceAtaque= 10;
 		this.poderAtaque=24;
 		this.premioFactory= PremioFactoryImpl.getInstance();
-		// accion actual puede ser desplazamiento o atacando
-	//.accionActual= EstadosInfectado.getEstado();
+		this.accionActual= EstadosInfectado.DESPLAZANDOSE.getEstado();
 		this.visitor= new InfectadoVisitorImpl(this);
 	}
 	

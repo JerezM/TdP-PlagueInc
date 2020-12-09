@@ -8,12 +8,12 @@ public class EntidadGraficaPocionVida implements EntidadGraficaPremio{
 	
 	public EntidadGraficaPocionVida() {
 		
-		imagen_pocion= new ImageIcon();		
+		imagenPocion= new ImageIcon();		
 	}
 	
 	public ImageIcon getSprite() {
 		// TODO Auto-generated method stub
-		return imagen_pocion;
+		return imagenPocion;
 	}
 
 }

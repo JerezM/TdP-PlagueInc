@@ -10,8 +10,10 @@ public class CuarentenaObligatoria extends EfectoTemporal{
 	public CuarentenaObligatoria(int posX,int posY) {
 		
 		super(posX,posY);
+		duracion=1000;
 		velocidad=10;
 		entidadGrafica= new EntidadGraficaCuarentenaObligatoria();
+		//falta posx e posY. Preguntar por posInicial.
 	}
 
 	public void efecto() {
