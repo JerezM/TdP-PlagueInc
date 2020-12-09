@@ -1,8 +1,8 @@
 package premio;
 
-public abstract class ObjetoPrecioso extends Premio{
-
+public class Snippet {
 	public ObjetoPrecioso(int posX,int posY) {
 		super(posX,posY);
 	}
 }
+
