@@ -36,6 +36,7 @@ public class GUI extends JFrame {
 
 		contentPane = MapaView.getInstance();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(null);
         setContentPane(contentPane);
         
     }
