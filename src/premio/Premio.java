@@ -17,11 +17,9 @@ public abstract class Premio extends EntidadModel implements JugadorCollider {
 	public Premio(int posX, int posY) {
 		
 		super();
-		
-		
 	}
 	
-	abstract void efecto();
 	abstract void efecto(Jugador jugador);
+	
 	abstract int getVelocidad();
 }

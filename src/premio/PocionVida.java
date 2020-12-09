@@ -1,5 +1,7 @@
 package premio;
 
+import java.awt.Point;
+
 import entidad.grafica.*;
 
 public class PocionVida extends ObjetoPrecioso{
@@ -9,7 +11,7 @@ public class PocionVida extends ObjetoPrecioso{
 	public PocionVida(int posX, int posY) {
 		
 		super(posX,posY);
-		entidad_grafica= new EntidadGraficaPocionVida();
+		entidadGrafica= new EntidadGraficaPocionVida();
 		velocidad= 10;
 		premioVida=20;
 	}
@@ -30,7 +32,5 @@ public class PocionVida extends ObjetoPrecioso{
 	public Point moverse() {
 		
 	}
-	
-	
 
 }
