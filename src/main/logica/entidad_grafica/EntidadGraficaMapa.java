@@ -38,7 +38,7 @@ public class EntidadGraficaMapa extends EntidadGrafica {
         mapas = new String[2];
         nivelActual = 0;
 
-        mapas[0] = "";//Añadir paths de las imagenes para los escenarios
+        mapas[0] = "/resources/sprites/mapa/map-background.png";
         mapas[1] = "";
 
 		this.spriteIcon = new ImageIcon(this.getClass().getResource( mapas[nivelActual] ));
