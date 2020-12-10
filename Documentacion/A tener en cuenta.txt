@@ -1,0 +1,21 @@
+- En la clase createPremio de ObjetoPreciosoFactory y EfectoTemporalFactory
+no me deja retornar el premio creado.
+
+- Falta agregar la carpeta de imagenes e inicializar los contructores de las entidades .
+
+- En la clase premio pense en dos metodos efecto() y efecto(Jugador j) 
+	efecto() para usarlo en cuarentenaObligatoria
+	efecto(Jugador j) para tener acceso a la vida y al arma.
+
+- En SuperArma -> efecto(jugador) lo pase por parametro para poder tener acceso al arma del jugador.
+ improvise algunos metodos ej: getArma , changeState (correspondiente a la clase arma
+
+- En cuarentenaObligatoria, no se como tener acceso a la oleada de enemigos.
+- OleadaEnemigosImpl es una lista de infectados. No esta implementada porque no supe como mandarle
+la ubicacion en el mapa. No conozco la implementacion de mapa.
+
+- Falta agregar clase OleadaEnemigoLvl2State. La 1 esta vacia
+
+- Falta implementar movimiento en las clases infectados.
+
+- En beta me re re olvide de implementar getSprite y de borrar actualizarSprite. ( Lo sientoo)
