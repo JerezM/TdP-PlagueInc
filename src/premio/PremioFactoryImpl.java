@@ -23,13 +23,13 @@ public class PremioFactoryImpl implements PremioFactory{
 		return instance;
 	}
 
-	public Premio createPremio() {
+	public Premio createPremio(int posX, int posY) {
 		
 		int size= factories.size();
 		Random r= new Random();
 		int indice=0+r.nextInt(size);
 		PremioFactory factory= factories.get(indice);
-		Premio premio = factory.createPremio();
+		Premio premio = factory.createPremio(posX,posY);
 	
 		return premio;
 	}

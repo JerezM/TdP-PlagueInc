@@ -50,7 +50,7 @@ public abstract class Infectado {
 	
 	public Premio lanzarPremio() {
 	
-		return premioFactory.createPremio();
+		return premioFactory.createPremio(posActual.getX(), posActual.getY());
 	} 
 	
 	public int getVida() {

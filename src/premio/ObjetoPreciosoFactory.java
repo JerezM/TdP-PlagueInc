@@ -16,7 +16,7 @@ public class ObjetoPreciosoFactory implements PremioFactory{
 		return instance;
 	}
 	
-	public Premio createPremio() {
-		return new Premio();
+	public Premio createPremio(int posX, int posY) {
+		return new Premio(posX,posY);
 	}
 }
