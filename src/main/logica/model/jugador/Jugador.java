@@ -5,11 +5,13 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 
 import main.logica.entidad_grafica.EntidadGraficaJugador;
+import main.view.ui_updater.UIUpdater;
 import properties.JugadorProperties;
 
 public class Jugador {
 
     private int width, height;
+    private UIUpdater uiUpdater;
 
     protected int vida;
     protected int velocidadDesplazamiento;
@@ -19,6 +21,7 @@ public class Jugador {
     
 
     protected Jugador() {
+
         vida = JugadorProperties.VIDA.getValor();
         velocidadDesplazamiento = JugadorProperties.VELOCIDAD_DESPLAZAMIENTO.getValor();
 
@@ -34,7 +37,9 @@ public class Jugador {
         height = JugadorProperties.HEIGHT.getValor();
         ImageIcon sprite = entidadGrafica.getSprite();
 
-        //SE COMUNICA CON EL UI UPDATER PARA PASARLE LAS STATS
+        uiUpdater = UIUpdater.getInstance();
+        int id = this.hashCode();
+        uiUpdater.generarLabel(id, posicion, width, height, sprite);
 
     }
 
