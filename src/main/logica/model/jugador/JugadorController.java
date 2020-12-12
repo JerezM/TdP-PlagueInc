@@ -20,6 +20,6 @@ public class JugadorController {
      * Se encarga de inicializar el model logico del jugador.
      */
     public void generarJugador() {
-        jugador = Jugador.getInstance();
+        jugador = JugadorImpl.getInstance();
     }
 }
