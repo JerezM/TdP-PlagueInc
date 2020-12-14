@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import main.view.mapa.MapaView;
+import properties.FrameProperties;
 
 @SuppressWarnings("serial")
 public class GUI extends JFrame {
@@ -31,7 +32,13 @@ public class GUI extends JFrame {
 
         setTitle("PlagueInc");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(300, 25, 755, 637);
+
+        int posXCreacion = FrameProperties.POS_X_CREACION.getValor();
+        int posYCreacion = FrameProperties.POS_Y_CREACION.getValor();
+        int frameWidth = FrameProperties.WIDTH.getValor();
+        int frameHeight = FrameProperties.HEIGHT.getValor();
+
+        setBounds(posXCreacion, posYCreacion, frameWidth, frameHeight);
         setResizable(false);
 
 		contentPane = MapaView.getInstance();
