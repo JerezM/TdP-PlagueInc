@@ -25,4 +25,33 @@ public class NivelController {
         nivel.inicializarPartida();
     }
     
+    /**
+     * Consulta si todavia hay niveles para jugar.
+     * @return True en caso de que haya niveles, falso en caso de que ya se hayan jugado todos los niveles.
+     */
+    public boolean hasNextLevel() {
+        return true;
+    }
+
+    /**
+     * Se encarga de inicializar el proximo nivel disponible.
+     */
+    public void startNextLevel() {
+
+    }
+
+    /**
+     * Consulta si el nivel actual se encuentra completado.
+     * @return True en caso de que el nivel actual este completado, falso en caso contrario.
+     */
+    public boolean isLevelComplete() {
+        return true;
+    }
+
+    /**
+     * Se encarga de actualizar la oleada de enemigos en caso de que se generen nuevos infectados.
+     */
+    public void update() {
+
+    }
 }

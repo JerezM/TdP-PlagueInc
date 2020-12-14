@@ -22,4 +22,20 @@ public class JugadorController {
     public void generarJugador() {
         jugador = JugadorImpl.getInstance();
     }
+
+    /**
+     * Acutaliza el model del jugador con respecto al movimiento parametrizado.
+     * @param movimientoJugador Movimiento a realizarse por el jugador.
+     */
+    public void update(int movimientoJugador) {
+
+    }
+
+    /**
+     * Consulta si el jugador se encuentra vivo actualmente.
+     * @return True en caso de que el jugador este vivo, false en caso contrario.
+     */
+    public boolean isAlive() {
+        return true;
+    }
 }

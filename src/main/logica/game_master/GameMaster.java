@@ -1,5 +1,8 @@
 package main.logica.game_master;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import main.logica.model.jugador.JugadorController;
 import main.logica.nivel.NivelController;
 
@@ -10,9 +13,13 @@ public class GameMaster extends Thread {
     private NivelController nivelController;
     private JugadorController jugadorController;
 
+    //private List<EntidadModel> entidades;
+
     private GameMaster() {
         nivelController = NivelController.getInstance();
         jugadorController = JugadorController.getInstance();
+
+        //entidades = new LinkedList<EntidadModel>();
     }
 
     public static GameMaster getInstance() {
@@ -23,8 +30,66 @@ public class GameMaster extends Thread {
 		return instance;
     }
 
+    /**
+     * Se encarga de inicializar el mapa y el jugador en su aspecto logico.
+     */
     public void inicializarPartida() {
         nivelController.inicializarPartida();
         jugadorController.generarJugador();
+    }
+
+    /**
+     * Se encarga de generar los enemigos para que empiece el nivel.
+     */
+    public void empezarNivel() {
+        this.run();
+    }
+
+    @Override
+    public void run() {
+
+        boolean jugadorVivo = true;
+        //List<EntidadModel> entidadesActuales;
+
+        while( jugadorVivo && nivelController.hasNextLevel() ) {//Mientras queden niveles por jugar y el jugador este vivo
+
+            nivelController.startNextLevel();
+
+            while( jugadorVivo && !nivelController.isLevelComplete() ) {//Mientras no haya completado el nivel y el jugador este vivo
+
+                /*
+                entidadesActuales = new LinkedList<EntidadModel>(entidades);
+
+                for(EntidadModel entidad : entidadesActuales) {
+                    entidad.update();
+                }
+                */
+
+                int movimientoJugador = this.getUltimoMovimientoJugador();
+                jugadorController.update(movimientoJugador);
+
+                //masterCollider.checkCollisions();
+
+                nivelController.update();
+
+                jugadorVivo = jugadorController.isAlive();
+            }
+        }
+
+        if(jugadorVivo) {
+            //YOU WIN
+        }
+        else {
+            //YOU LOSE
+        }
+
+    }
+
+    /**
+     * Consulta cual fue el ultimo movimiento realizado por el jugador.
+     * @return Un entero el cual representa el movimiento realizado.
+     */
+    private int getUltimoMovimientoJugador() {
+        return 0;
     }
 }

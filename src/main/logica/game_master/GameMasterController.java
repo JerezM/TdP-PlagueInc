@@ -27,11 +27,10 @@ public class GameMasterController {
     }
 
     /**
-     * Se encarga de generar la oleada de enemigos para que empieze el nivel.
+     * Se encarga de generar los enemigos para que empiece el nivel.
      */
-    public void generarOleadaEnemigos() {
-        // TODO Auto-generated method stub
-
+    public void empezarNivel() {
+        gameMaster.empezarNivel();
     }
     
 }
