@@ -30,21 +30,20 @@ public class GUI extends JFrame {
     
     private void initComponents() {
 
-        setTitle("PlagueInc");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("PlagueInc");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         int posXCreacion = FrameProperties.POS_X_CREACION.getValor();
         int posYCreacion = FrameProperties.POS_Y_CREACION.getValor();
-        int frameWidth = FrameProperties.WIDTH.getValor();
-        int frameHeight = FrameProperties.HEIGHT.getValor();
-
-        setBounds(posXCreacion, posYCreacion, frameWidth, frameHeight);
-        setResizable(false);
+    
+        this.setLocation(posXCreacion, posYCreacion);
+        this.setResizable(false);
 
 		contentPane = MapaView.getInstance();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
-        setContentPane(contentPane);
+        this.setContentPane(contentPane);
+        this.pack();
         
     }
     

@@ -1,9 +1,12 @@
 package main.view.mapa;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import properties.MapaProperties;
 
 @SuppressWarnings("serial")
 public class MapaView extends JPanel {
@@ -12,7 +15,12 @@ public class MapaView extends JPanel {
 
     private ImageIcon imagenMapa;
 
-    private MapaView() {}
+    private MapaView() {
+        int widthMapa = MapaProperties.WIDTH.getValor();
+        int heightMapa = MapaProperties.HEIGHT.getValor();
+
+        this.setPreferredSize(new Dimension(widthMapa, heightMapa));
+    }
 
     public static MapaView getInstance() {
         if( instance == null ) {
