@@ -28,7 +28,7 @@ public class JugadorController {
      * @param movimientoJugador Movimiento a realizarse por el jugador.
      */
     public void update(int movimientoJugador) {
-
+        jugador.update(movimientoJugador);
     }
 
     /**
@@ -36,6 +36,9 @@ public class JugadorController {
      * @return True en caso de que el jugador este vivo, false en caso contrario.
      */
     public boolean isAlive() {
-        return true;
+        int vidaJugador = jugador.getVida();
+        boolean estaVivo = (vidaJugador > 0);
+
+        return estaVivo;
     }
 }
