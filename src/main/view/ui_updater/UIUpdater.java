@@ -8,15 +8,18 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import main.view.mapa.MapaViewControllerImpl;
+import main.view.mapa.MapaViewUpdaterController;
+
 public class UIUpdater {
     
     private static UIUpdater instance;
 
     private Map<Integer, JLabel> labelsActuales;
-    //private MapaViewUpdaterController mapaViewController;
+    private MapaViewUpdaterController mapaViewController;
 
     private UIUpdater() {
-        //mapaViewController = MapaViewControllerImpl.getInstance();
+        mapaViewController = MapaViewControllerImpl.getInstance();
         labelsActuales = new HashMap<Integer, JLabel>();
     }
 
@@ -48,7 +51,7 @@ public class UIUpdater {
         
         labelsActuales.put(id, label);
 
-        //mapaViewController.agregarLabel(label);
+        mapaViewController.agregarLabel(label);
     }
 
     /**
@@ -67,7 +70,7 @@ public class UIUpdater {
 
         this.pintarLabel(label, sprite);
 
-        //mapaViewController.updateView();
+        mapaViewController.updateView();
     }
 
     /**

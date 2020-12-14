@@ -1,8 +1,9 @@
 package main.view.mapa;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
-public class MapaViewControllerImpl implements MapaViewController {
+public class MapaViewControllerImpl implements MapaViewController, MapaViewUpdaterController {
 
     private static MapaViewControllerImpl instance;
 
@@ -13,16 +14,27 @@ public class MapaViewControllerImpl implements MapaViewController {
     }
 
     public static MapaViewControllerImpl getInstance() {
-        if( instance == null ) {
-			instance = new MapaViewControllerImpl();
-		}
-		
-		return instance;
+        if (instance == null) {
+            instance = new MapaViewControllerImpl();
+        }
+
+        return instance;
     }
 
     @Override
     public void inicializarComponenteGraficoMapa(ImageIcon imagenMapa) {
         mapaView.inicializarImagenMapa(imagenMapa);
+    }
+
+    @Override
+    public void agregarLabel(JLabel label) {
+        mapaView.add(label);
+        this.updateView();
+    }
+
+    @Override
+    public void updateView() {
+        mapaView.repaint();
     }
     
 }
