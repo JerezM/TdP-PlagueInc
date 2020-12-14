@@ -15,4 +15,10 @@ public class JugadorImpl extends Jugador {
 		
 		return instance;
     }
+
+    @Override
+    protected void disparar() {
+        // TODO Auto-generated method stub
+
+    }
 }
