@@ -6,13 +6,14 @@ public enum JugadorProperties {
     VELOCIDAD_DESPLAZAMIENTO(25),
     WIDTH(33),
     HEIGHT(33),
-    POS_CREACION_EJE_X(340),
-    POS_CREACION_EJE_Y(560);//600
+    POS_CREACION_EJE_X((MapaProperties.WIDTH.getValor() / 2) - 33),
+    POS_CREACION_EJE_Y(MapaProperties.HEIGHT.getValor() - 66);
 
     private int valor;
 
     private JugadorProperties(int valor){
         this.valor = valor;
+        
     }
 
     public int getValor() {
