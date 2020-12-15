@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import main.logica.model.jugador.JugadorController;
+import main.logica.model.jugador.JugadorListener;
+import main.logica.model.jugador.JugadorListenerImpl;
 import main.logica.nivel.NivelController;
 
 public class GameMaster extends Thread {
@@ -12,12 +14,15 @@ public class GameMaster extends Thread {
 
     private NivelController nivelController;
     private JugadorController jugadorController;
+    private JugadorListener jugadorListener;
 
     //private List<EntidadModel> entidades;
 
     private GameMaster() {
+
         nivelController = NivelController.getInstance();
         jugadorController = JugadorController.getInstance();
+        jugadorListener = JugadorListenerImpl.getInstance();
 
         //entidades = new LinkedList<EntidadModel>();
     }
@@ -90,6 +95,6 @@ public class GameMaster extends Thread {
      * @return Un entero el cual representa el movimiento realizado.
      */
     private int getUltimoMovimientoJugador() {
-        return 0;
+        return jugadorListener.getUltimoMovimientoJugador();
     }
 }
