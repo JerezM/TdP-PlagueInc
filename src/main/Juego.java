@@ -1,6 +1,7 @@
 package main;
 
 import main.logica.game_master.GameMasterController;
+import main.logica.model.jugador.JugadorListenerImpl;
 import main.view.GUI;
 
 public class Juego {
@@ -11,6 +12,9 @@ public class Juego {
 
         GUI frame = GUI.getInstance();
         frame.setVisible(true);
+
+        frame.addKeyListener(JugadorListenerImpl.getInstance());
         
+        gameMasterController.empezarNivel();
     }    
 }

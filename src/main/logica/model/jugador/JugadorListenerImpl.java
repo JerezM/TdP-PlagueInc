@@ -39,14 +39,14 @@ public class JugadorListenerImpl implements KeyListener, JugadorListener {
 
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             synchronized(ultimoMovimiento) {
-                int movDerecha = MovimientosJugador.QUIETO.getMovimiento();
+                int movDerecha = MovimientosJugador.MOV_DERECHA.getMovimiento();
                 ultimoMovimiento.lazySet(movDerecha);
             }
         }
 
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
 			synchronized(ultimoMovimiento) {
-                int movIzquierda = MovimientosJugador.QUIETO.getMovimiento();
+                int movIzquierda = MovimientosJugador.MOV_IZQUIERDA.getMovimiento();
                 ultimoMovimiento.lazySet(movIzquierda);
             }
         }
@@ -58,21 +58,21 @@ public class JugadorListenerImpl implements KeyListener, JugadorListener {
         
         if(e.getKeyCode() == KeyEvent.VK_SPACE) {
             synchronized(ultimoMovimiento) {
-                int quieto = MovimientosJugador.DISPARANDO.getMovimiento();
+                int quieto = MovimientosJugador.QUIETO.getMovimiento();
                 ultimoMovimiento.lazySet(quieto);
             }           
         }
 
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
             synchronized(ultimoMovimiento) {
-                int quieto = MovimientosJugador.DISPARANDO.getMovimiento();
+                int quieto = MovimientosJugador.QUIETO.getMovimiento();
                 ultimoMovimiento.lazySet(quieto);
             }
         }
 
         if(e.getKeyCode() == KeyEvent.VK_LEFT){
 			synchronized(ultimoMovimiento) {
-                int quieto = MovimientosJugador.DISPARANDO.getMovimiento();
+                int quieto = MovimientosJugador.QUIETO.getMovimiento();
                 ultimoMovimiento.lazySet(quieto);
             }
         }
@@ -80,13 +80,12 @@ public class JugadorListenerImpl implements KeyListener, JugadorListener {
     }
 
     @Override
-    public int getUltimoMovimientoJugador() {
-        
+    public synchronized int getUltimoMovimientoJugador() {
         int movimientoJugador;
         synchronized(ultimoMovimiento) {
             movimientoJugador = ultimoMovimiento.get();
         }
-
+        System.out.println("movJugador: "+movimientoJugador);
         return movimientoJugador;
     }
     
