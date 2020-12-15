@@ -55,22 +55,25 @@ public class UIUpdater {
     }
 
     /**
-     * Se encarga de actualizar el label identificado por el id parametrizado con los valores parametrizados respectivamente.
+     * Se encarga de actualizar la posicion del label identificado por el id parametrizado.
      * @param id ID el cual identificara el label(en este caso se utilizara el hashcode).
      * @param posicion Posicion nueva que poseera el label.
-     * @param sprite Imagen nueva que poseera el label.
      */
-    public void updateLabel(int id, Point posicion, ImageIcon sprite) {
+    public void updatePosicionLabel(int id, Point posicion) {
         JLabel label = labelsActuales.get(id);
 
-        int posX = (int) posicion.getX();
-        int posY = (int) posicion.getY();
+        label.setLocation(posicion);
+    }
 
-        label.setBounds(posX, posY, label.getWidth(), label.getHeight());
+    /**
+     * Se encarga de actualizar el sprite del label identifica por el id parametrizado.
+     * @param id ID el cual identificara el label(en este caso se utilizara el hashcode).
+     * @param sprite Imagen nueva que poseera el label.
+     */
+    public void updateSpriteLabel(int id, ImageIcon sprite) {
+        JLabel label = labelsActuales.get(id);
 
         this.pintarLabel(label, sprite);
-
-        mapaViewController.updateView();
     }
 
     /**
