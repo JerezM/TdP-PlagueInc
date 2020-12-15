@@ -75,7 +75,7 @@ public class GameMaster extends Thread {
                 jugadorController.update(movimientoJugador);
                 
                 try {
-                    GameMaster.sleep(150);
+                    GameMaster.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

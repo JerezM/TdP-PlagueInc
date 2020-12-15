@@ -3,7 +3,7 @@ package properties;
 public enum JugadorProperties {
     
     VIDA(100),
-    VELOCIDAD_DESPLAZAMIENTO(25),
+    VELOCIDAD_DESPLAZAMIENTO(15),
     WIDTH(33),
     HEIGHT(33),
     POS_CREACION_EJE_X((MapaProperties.WIDTH.getValor() / 2) - 33),
