@@ -10,8 +10,4 @@ public interface MapaViewUpdaterController {
      */
     public void agregarLabel(JLabel label);
 
-    /**
-     * Se encarga de actualizar el mapa para que se puedan visualizar los cambios realizados.
-     */
-    public void updateView();
 }

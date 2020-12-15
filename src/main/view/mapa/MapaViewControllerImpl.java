@@ -29,12 +29,6 @@ public class MapaViewControllerImpl implements MapaViewController, MapaViewUpdat
     @Override
     public void agregarLabel(JLabel label) {
         mapaView.add(label);
-        this.updateView();
-    }
-
-    @Override
-    public void updateView() {
-        mapaView.repaint();
     }
     
 }
