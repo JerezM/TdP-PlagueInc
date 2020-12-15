@@ -47,48 +47,80 @@ public abstract class Jugador {
 
     /**
      * Acutaliza el model del jugador con respecto al movimiento parametrizado.
-     * @param movimientoJugador Movimiento a realizarse por el jugador.
+     * @param movimientoNuevo Movimiento a realizarse por el jugador.
      */
-    public void update(int movimientoJugador) {
-        entidadGrafica.actualizarSprite(movimientoJugador);
-        movimientoActual = movimientoJugador;
+    public void update(int movimientoNuevo) {
 
+        int quieto = MovimientosJugador.QUIETO.getMovimiento();
         int movIzq = MovimientosJugador.MOV_IZQUIERDA.getMovimiento();
         int movDer = MovimientosJugador.MOV_DERECHA.getMovimiento();
         int disparando = MovimientosJugador.DISPARANDO.getMovimiento();
-       
-        if(movimientoActual == movIzq || movimientoActual == movDer) {
-            this.desplazarce(movimientoActual);
+
+        if ( (movimientoActual != quieto) && (movimientoNuevo == quieto) ) {
+            this.cambiarSprite(movimientoNuevo);
+            movimientoActual = movimientoNuevo;
         }
-        else if(movimientoActual == disparando) {
+        else if ( (movimientoActual != disparando) && (movimientoNuevo == disparando) ) {
+            this.cambiarSprite(movimientoNuevo);
             this.disparar();
+            movimientoActual = movimientoNuevo;
+        }
+        else if ( (movimientoActual == movimientoNuevo) && (movimientoActual == disparando) ) {
+            this.disparar();
+        }   
+        else if ( ((movimientoActual == quieto) || (movimientoActual == disparando)) && ((movimientoNuevo == movDer) || (movimientoNuevo == movIzq)) ) {
+            this.cambiarSprite(movimientoNuevo);
+            this.desplazarce(movimientoNuevo);
+            movimientoActual = movimientoNuevo;
+        }
+        else if ( (movimientoActual == movimientoNuevo) && ((movimientoActual == movDer) || (movimientoActual == movIzq)) ) {
+            this.desplazarce(movimientoNuevo);
+            movimientoActual = movimientoNuevo;
+        }
+        else if ( (movimientoActual == movDer) && (movimientoNuevo == movIzq) ) {
+            this.cambiarSprite(movimientoNuevo);
+            this.desplazarce(movimientoNuevo);
+            movimientoActual = movimientoNuevo;
+        }
+        else if ( (movimientoActual == movIzq) && (movimientoNuevo == movDer) ) {
+            this.cambiarSprite(movimientoNuevo);
+            this.desplazarce(movimientoNuevo);
+            movimientoActual = movimientoNuevo;
         }
 
-        ImageIcon sprite = entidadGrafica.getSprite();
-        uiUpdater.updateLabel(id, posicion, sprite);
+    }
+
+    /**
+     * Se encarga de cambiar el sprite por el cual represente el movimiento parametrizado.
+     * @param movimientoNuevo El nuevo movimiento realizado por el jugador.
+     */
+    protected void cambiarSprite(int movimientoNuevo) {
+        ImageIcon sprite = entidadGrafica.actualizarSprite(movimientoNuevo);
+        uiUpdater.updateSpriteLabel(id, sprite);
     }
 
     /**
      * Se encarga de desplazar al jugador hacia el lado indicado por el valor parametrizado.
-     * @param movimientoJugador Movimiento el cual el jugador debe realizar.
+     * @param movimientoNuevo Movimiento el cual el jugador debe realizar.
      */
-    protected void desplazarce(int movimientoJugador) {
+    protected void desplazarce(int movimientoNuevo) {
         int posX = (int) posicion.getX();
         int posY = (int) posicion.getY();
         
-        if ( movimientoJugador == MovimientosJugador.MOV_DERECHA.getMovimiento() ) {
+        if ( movimientoNuevo == MovimientosJugador.MOV_DERECHA.getMovimiento() ) {
             posX += velocidadDesplazamiento;
             
             int mapaWidth = MapaProperties.WIDTH.getValor(); 
-            if (posX > (mapaWidth -5) ) posX = mapaWidth -5;
+            if (posX > (mapaWidth -33) ) posX = mapaWidth -33;
         }
-        else if ( movimientoJugador == MovimientosJugador.MOV_IZQUIERDA.getMovimiento() ) {
+        else if ( movimientoNuevo == MovimientosJugador.MOV_IZQUIERDA.getMovimiento() ) {
             posX -= velocidadDesplazamiento;
 
             if (posX < 5) posX = 5;
         }
 
         posicion.setLocation(posX, posY);
+        uiUpdater.updatePosicionLabel(id, posicion);
     }
 
     /**
