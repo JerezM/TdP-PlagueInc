@@ -35,4 +35,5 @@ public class Mapa {
         mapaActual = entidadGrafica.getSprite();
         mapaViewController.inicializarComponenteGraficoMapa(mapaActual);
     }
+
 }
