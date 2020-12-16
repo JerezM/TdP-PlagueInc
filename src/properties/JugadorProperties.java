@@ -7,7 +7,7 @@ public enum JugadorProperties {
     WIDTH(33),
     HEIGHT(33),
     POS_CREACION_EJE_X((MapaProperties.WIDTH.getValor() / 2) - 33),
-    POS_CREACION_EJE_Y(MapaProperties.HEIGHT.getValor() - 66);
+    POS_CREACION_EJE_Y(MapaProperties.HEIGHT.getValor() - 40);
 
     private int valor;
 
