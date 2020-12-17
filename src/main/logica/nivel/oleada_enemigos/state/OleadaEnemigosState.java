@@ -10,19 +10,31 @@ import java.awt.Point;
 
 import main.logica.model.infectado.Infectado;
 import main.logica.model.infectado.factory.InfectadoFactory;
+import main.logica.nivel.oleada_enemigos.entry.EntryImpl;
+import properties.JugadorProperties;
 import properties.MapaProperties;
 
 public abstract class OleadaEnemigosState {
     
     protected InfectadoFactory factoryInfectados;
-    protected List<Infectado> enemigosActivos;
+
     protected int cantEnemigosActivos;//dificultad
     protected int cantOleadas;//duracion
     protected int oleadasCompletadas;//variable para testeas que se haya completado la oleada
 
     /**
+     * Lista la cual guarda referencia de los infectados activos actualmente.
+     * Cada entrada poseer un integer y un infectado:
+     * Integer: Guarda el index para saber en que posicion del mapa se encuentra el infectado.
+     * Infectado: Referencia al infectado correspondiente.
+     * 
+     * Para saber mas sobre el index y la posicion de los enemigos mirar {@link #posicionesInfectados}
+     */
+    protected List<Entry<Integer, Infectado>> enemigosActivos;
+
+    /**
      * Indica las posibles posiciones donde es posible crear un infectado.
-     * Map<index, Entry<posX, existe>>
+     * Map< index, Entry< posX, existe>>
      * index: Simplemente para organizar.
      * posX: Indica la posicion en el ejeX en la que se puede crear correspondiente al index.
      * existe: booleano el cual indica si hay un infectado creado en esa posicion actualmente.
@@ -31,17 +43,34 @@ public abstract class OleadaEnemigosState {
 
     protected OleadaEnemigosState() {
         factoryInfectados = InfectadoFactory.getInstance();
-        enemigosActivos = new LinkedList<Infectado>();
-        oleadasCompletadas = 0;
+        enemigosActivos = new LinkedList<Entry<Integer, Infectado>>();
+
         posicionesInfectados = new HashMap<Integer, Entry<Integer, Boolean>>();
         this.inicializarPosicionesInfectados();
+
+        this.oleadasCompletadas = 0;
     }
 
     /**
      * Se encarga de inicializar el atributo posicionesInfectados.
      */
     protected void inicializarPosicionesInfectados() {
+        int posXInicial = 5;
+        int distanciamientoEntreInfectado = JugadorProperties.WIDTH.getValor() + 10;
 
+        int cantCeldas = ((MapaProperties.WIDTH.getValor() - JugadorProperties.WIDTH.getValor()) - posXInicial) / 
+                         (distanciamientoEntreInfectado);
+        //Despues reemplazar el jugadorProperties por el InfectadoProperties          
+        
+        int posX = posXInicial;
+
+        for (int index = 1; index <= cantCeldas; index++) {
+            Entry<Integer, Boolean> entry = new EntryImpl<Integer, Boolean>(posX, false);
+            
+            posicionesInfectados.put(index, entry);
+
+            posX += distanciamientoEntreInfectado;
+        }
     }
 
     /**
@@ -72,12 +101,14 @@ public abstract class OleadaEnemigosState {
         
         if (!enemigosActivos.isEmpty()) {//Si hay enemigos "vivos"
 
-            for (Infectado infectado : enemigosActivos) {
-                /*if (!infectado.isAlive()) {
-                    int posXInfectado = infectado.getPosicion().getX();
-                    enemigosActivos.remove(infectado);
-                    posicionesInfectados.get(indexInfectado).setValue(false);
-                }*/
+            for (Entry<Integer, Infectado> entry : enemigosActivos) {
+                Infectado infectado = entry.getValue();
+                int indexInfectado = entry.getKey();
+
+                if (true/*!infectado.isAlive()*/) {
+                    enemigosActivos.remove(entry);//elimino al infectado de la lista de infectados activos
+                    posicionesInfectados.get(indexInfectado).setValue(false);//Libero su posicion en el mapa.
+                }
             }
 
             if (enemigosActivos.isEmpty() && (oleadasCompletadas < cantOleadas)) {
@@ -115,8 +146,9 @@ public abstract class OleadaEnemigosState {
                     int posX = entry.getKey();
                     Point posCreacion = new Point(posX, posY);
 
-                    enemigosActivos.add( factoryInfectados.createInfectado(posCreacion) );
-                    entry.setValue(true);
+                    Infectado infectadoNuevo = factoryInfectados.createInfectado(posCreacion);
+                    enemigosActivos.add( new EntryImpl<Integer, Infectado>(indexPosicion, infectadoNuevo) );
+                    entry.setValue(true);//indica que se ha generado un infectado en esta posicion.
                 }
             }        
              
